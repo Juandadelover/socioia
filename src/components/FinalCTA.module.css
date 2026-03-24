@@ -1,0 +1,165 @@
+@import '../styles/variables.css';
+
+.finalCTA {
+  padding: 120px 0;
+  background: linear-gradient(135deg, var(--electric) 0%, var(--purple) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.finalCTA::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.ctaHeader {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.title {
+  font-family: var(--font-primary);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+
+.highlight {
+  color: var(--gold);
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.ctaContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.benefitItem {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.benefitIcon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.benefitText h3 {
+  font-family: var(--font-primary);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.benefitText p {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+}
+
+.formWrapper {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .finalCTA {
+    padding: 80px 0;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .ctaHeader {
+    margin-bottom: 60px;
+  }
+
+  .title {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+  }
+
+  .subtitle {
+    font-size: 1.125rem;
+  }
+
+  .ctaContent {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .benefits {
+    gap: 24px;
+  }
+
+  .benefitItem {
+    gap: 16px;
+  }
+
+  .benefitIcon {
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+  }
+
+  .formWrapper {
+    padding: 24px;
+  }
+}
+
+/* Tablet Styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .ctaContent {
+    gap: 60px;
+  }
+
+  .formWrapper {
+    padding: 32px;
+  }
+}
