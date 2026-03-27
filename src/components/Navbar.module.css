@@ -1,0 +1,197 @@
+.navbar {
+  position: fixed;
+  top: var(--space-4);
+  left: var(--space-4);
+  right: var(--space-4);
+  z-index: 50;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-radius: 16px;
+  transition: all var(--transition-base);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-lg);
+}
+
+.navbar.scrolled {
+  background: rgba(15, 23, 42, 0.95);
+  border-color: rgba(148, 163, 184, 0.2);
+  box-shadow: var(--shadow-xl);
+}
+
+.container {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  cursor: pointer;
+  transition: transform var(--transition-base);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logoText {
+  color: var(--text-primary);
+}
+
+.logoGold {
+  background: linear-gradient(120deg, var(--secondary), var(--secondary-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.desktopNav {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.navLink {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all var(--transition-base);
+  cursor: pointer;
+  padding: var(--space-2) var(--space-3);
+  border-radius: 8px;
+  position: relative;
+}
+
+.navLink:hover {
+  color: var(--secondary);
+  background: rgba(251, 191, 36, 0.1);
+}
+
+.ctaButton {
+  background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+  color: var(--text-inverse);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: var(--space-3) var(--space-6);
+  border-radius: 50px;
+  transition: all var(--transition-base);
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(251, 191, 36, 0.2);
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(251, 191, 36, 0.4);
+}
+
+.mobileMenuBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.mobileMenuBtn:hover {
+  background: rgba(148, 163, 184, 0.1);
+  border-color: var(--secondary);
+}
+
+.menuIcon {
+  width: 20px;
+  height: 20px;
+  color: var(--text-primary);
+  transition: color var(--transition-base);
+}
+
+.mobileMenuBtn:hover .menuIcon {
+  color: var(--secondary);
+}
+
+.mobileMenu {
+  position: absolute;
+  top: calc(100% + var(--space-4));
+  left: 0;
+  right: 0;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-radius: 16px;
+  padding: var(--space-6);
+  box-shadow: var(--shadow-xl);
+  display: none;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.mobileLink {
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: var(--space-3) var(--space-4);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+}
+
+.mobileLink:hover {
+  color: var(--secondary);
+  background: rgba(251, 191, 36, 0.1);
+}
+
+.mobileCta {
+  background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+  color: var(--text-inverse);
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-align: center;
+  padding: var(--space-4) var(--space-6);
+  border-radius: 50px;
+  margin-top: var(--space-4);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition-base);
+  box-shadow: 0 4px 16px rgba(251, 191, 36, 0.2);
+}
+
+.mobileCta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(251, 191, 36, 0.4);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    top: var(--space-2);
+    left: var(--space-2);
+    right: var(--space-2);
+  }
+  
+  .desktopNav {
+    display: none;
+  }
+
+  .ctaButton {
+    display: none;
+  }
+
+  .mobileMenuBtn {
+    display: flex;
+  }
+
+  .mobileMenu {
+    display: flex;
+  }
+}

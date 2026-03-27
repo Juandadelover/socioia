@@ -1,0 +1,141 @@
+.section {
+  padding: var(--space-24) 0;
+  background: var(--bg-secondary);
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--space-16);
+}
+
+.badge {
+  display: inline-block;
+  padding: var(--space-2) var(--space-4);
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--accent);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  border-radius: 50px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  margin-bottom: var(--space-4);
+}
+
+.title {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-8);
+}
+
+.card {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: var(--space-8);
+  position: relative;
+  transition: all var(--transition-base);
+}
+
+.card:hover {
+  border-color: var(--border-primary);
+  transform: translateY(-4px);
+}
+
+.featured {
+  border-color: var(--secondary);
+  box-shadow: var(--glow-secondary);
+}
+
+.popularBadge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+  color: var(--text-inverse);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  padding: var(--space-2) var(--space-4);
+  border-radius: 50px;
+}
+
+.planName {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+  text-align: center;
+}
+
+.price {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.amount {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  color: var(--secondary);
+}
+
+.period {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  margin-left: var(--space-2);
+}
+
+.features {
+  list-style: none;
+  margin-bottom: var(--space-8);
+}
+
+.features li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  color: var(--text-secondary);
+}
+
+.checkIcon {
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  font-weight: var(--font-semibold);
+  padding: var(--space-4) var(--space-6);
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all var(--transition-base);
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--glow-primary);
+}
+
+.ctaIcon {
+  width: 16px;
+  height: 16px;
+}
