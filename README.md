@@ -46,3 +46,4 @@ Deploy to Vercel:
 ## License
 
 Proprietary - SocioIA 2026
+# socioia
