@@ -12,11 +12,11 @@ const Hero = () => (
   <section id="inicio" className={styles.hero}>
     <div className={`wrap ${styles.grid}`}>
       <div className={styles.copy}>
-        <p className={`${styles.place} ${styles.in}`} style={{ '--d': '0ms' }}>
-          <Pin aria-hidden="true" />
-          Medellín y Valledupar, Colombia
-        </p>
         <h1 className={styles.title}>
+          <span className={`${styles.place} ${styles.in}`} style={{ '--d': '0ms' }}>
+            <Pin aria-hidden="true" />
+            Desarrollo de software e inteligencia artificial en Medellín y Valledupar
+          </span>
           <span className={`${styles.line} ${styles.in}`} style={{ '--d': '80ms' }}>
             Tecnología que
           </span>

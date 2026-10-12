@@ -1,7 +1,7 @@
 import Gallery from './ui/Gallery';
 import { PhoneFrame } from './ui/Frames';
-import { ArrowUpRight, WhatsApp } from './ui/icons';
-import { featuredProject as p } from '../data/projects';
+import { ArrowRight, ArrowUpRight, WhatsApp } from './ui/icons';
+import { featuredProject as p, projectPath } from '../data/projects';
 import { whatsappLink } from '../data/site';
 import styles from './FeaturedCase.module.css';
 
@@ -78,8 +78,12 @@ const FeaturedCase = () => (
           ))}
         </ul>
         <div className={styles.links}>
+          <a className="btn btn-primary" href={projectPath(p)}>
+            Ver caso completo
+            <ArrowRight />
+          </a>
           {p.url && (
-            <a className="btn btn-primary" href={p.url} target="_blank" rel="noopener noreferrer">
+            <a className="btn btn-ghost" href={p.url} target="_blank" rel="noopener noreferrer">
               Visitar {p.domain}
               <ArrowUpRight />
             </a>

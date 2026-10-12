@@ -25,7 +25,7 @@ const Navbar = () => {
   return (
     <header className={`${styles.header} ${scrolled || open ? styles.solid : ''}`}>
       <nav className={`wrap ${styles.nav}`} aria-label="Principal">
-        <a href="#inicio" className={styles.brand} onClick={() => setOpen(false)}>
+        <a href="/" className={styles.brand} onClick={() => setOpen(false)} aria-label="SocioIA, ir al inicio">
           <Logo className={styles.logo} />
         </a>
 

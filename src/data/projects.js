@@ -1,5 +1,6 @@
 // Portafolio de SocioIA. Las capturas viven en /public/proyectos/<slug>/.
 // `url`: dominio público del proyecto. Si está vacío, no se muestra el botón "Ver proyecto en vivo".
+// `page`: ruta de la página del caso en /portafolio/<page>.
 // `logo`: logotipo en /public/logos/ (se muestra en el carrusel de proyectos); `logoScale` opcional.
 // `device`: 'desktop' o 'mobile' (las capturas móviles se muestran dentro de un marco de celular).
 
@@ -17,6 +18,7 @@ const shot = (slug, file, label, device = 'desktop') => {
 
 export const featuredProject = {
   slug: 'vasam',
+  page: 'vasam-petshop',
   logo: '/logos/vasam.png',
   logoScale: 1.5, // logo cuadrado: se agranda para igualar el peso visual de los horizontales
   name: 'VASAM Petshop',
@@ -84,6 +86,7 @@ export const featuredProject = {
 export const projects = [
   {
     slug: 'credicontrol',
+    page: 'credicontrol',
     logo: '/logos/credicontrol.svg',
     name: 'CrédiControl',
     url: '',
@@ -110,6 +113,7 @@ export const projects = [
   },
   {
     slug: 'lumen',
+    page: 'lumen',
     logo: '/logos/lumen.png',
     name: 'LUMEN',
     url: '',
@@ -135,6 +139,7 @@ export const projects = [
   },
   {
     slug: 'la-felicida',
+    page: 'la-felicida',
     logo: '/logos/la-felicida.png',
     name: 'La Felicidá',
     url: '',
@@ -160,6 +165,7 @@ export const projects = [
   },
   {
     slug: 'tienda-did',
+    page: 'tienda-did',
     logo: '/logos/tienda-did.svg',
     name: 'Tienda DID',
     url: '',
@@ -182,3 +188,8 @@ export const projects = [
     ],
   },
 ];
+
+export const allProjects = [featuredProject, ...projects];
+export const projectPath = (p) => `/portafolio/${p.page}`;
+export const projectByPage = Object.fromEntries(allProjects.map((p) => [p.page, p]));
+export const projectBySlug = Object.fromEntries(allProjects.map((p) => [p.slug, p]));
