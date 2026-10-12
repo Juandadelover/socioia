@@ -6,8 +6,8 @@
 
 .top {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) auto auto;
-  gap: 2.5rem 4rem;
+  grid-template-columns: minmax(0, 1.5fr) repeat(3, auto);
+  gap: 2.5rem clamp(2rem, 5vw, 4.5rem);
   align-items: start;
 }
 
@@ -18,7 +18,7 @@
 
 .about {
   margin-top: 1rem;
-  max-width: 34ch;
+  max-width: 46ch;
   color: var(--text-3);
   font-size: 0.95rem;
 }
@@ -41,6 +41,14 @@
 .social {
   display: flex;
   gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.heading {
+  margin-bottom: 0.9rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--text);
 }
 
 .social a {
@@ -77,8 +85,18 @@
   font-size: 0.85rem;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 980px) {
   .top {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .top > div:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .top {
+    grid-template-columns: 1fr 1fr;
   }
 }

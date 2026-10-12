@@ -3,10 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "description": "Premium landing page for SocioIA - AI-powered business solutions",
+  "description": "Sitio web de SocioIA: desarrollo de software, web, apps e IA en Medellín y Valledupar",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node scripts/prerender.mjs",
     "preview": "vite preview"
   },
   "keywords": [

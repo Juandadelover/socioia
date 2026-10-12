@@ -123,3 +123,30 @@
     grid-column: 2;
   }
 }
+
+.body h3 a::after {
+  /* toda la fila es clicable */
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 650;
+  color: var(--cyan-hi);
+}
+
+.more svg {
+  width: 1em;
+  height: 1em;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.list > li:hover .more svg {
+  transform: translateX(4px);
+}

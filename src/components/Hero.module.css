@@ -41,8 +41,12 @@
   animation-delay: var(--d, 0ms);
 }
 
-.place {
-  display: inline-flex;
+.title .place {
+  display: flex;
+  font-family: var(--font-body);
+  letter-spacing: 0;
+  line-height: 1.4;
+  white-space: normal;
   align-items: center;
   gap: 0.45rem;
   color: var(--text-2);

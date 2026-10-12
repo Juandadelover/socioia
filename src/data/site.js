@@ -7,8 +7,8 @@ export const whatsappLink = (message = 'Hola SocioIA, quiero hablar sobre un pro
   `https://wa.me/57${PHONE}?text=${encodeURIComponent(message)}`;
 
 export const NAV_LINKS = [
-  { href: '#proyectos', label: 'Proyectos' },
-  { href: '#servicios', label: 'Servicios' },
-  { href: '#proceso', label: 'Cómo trabajamos' },
-  { href: '#preguntas', label: 'Preguntas' },
+  { href: '/#proyectos', label: 'Proyectos' },
+  { href: '/#servicios', label: 'Servicios' },
+  { href: '/#proceso', label: 'Cómo trabajamos' },
+  { href: '/#preguntas', label: 'Preguntas' },
 ];
