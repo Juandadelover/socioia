@@ -32,27 +32,30 @@
 
 .group {
   display: flex;
-  gap: 1rem;
-  padding-right: 1rem;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  padding-right: clamp(1.5rem, 4vw, 3.5rem);
 }
 
 .chip {
   display: grid;
   place-items: center;
-  width: clamp(170px, 18vw, 230px);
-  height: clamp(72px, 7vw, 92px);
-  padding: 0.9rem 1.4rem;
-  border-radius: 18px;
-  background: oklch(0.975 0.006 230);
-  border: 1px solid oklch(1 0 0 / 0.6);
+  width: clamp(150px, 15vw, 210px);
+  height: clamp(56px, 5.5vw, 76px);
+  padding-inline: 0.75rem;
+  opacity: 0.72;
+  filter: saturate(0.85);
   transition:
-    transform 0.4s var(--ease-out),
-    box-shadow 0.4s var(--ease-out);
+    opacity 0.35s var(--ease-out),
+    filter 0.35s var(--ease-out),
+    transform 0.35s var(--ease-out);
 }
 
-.chip:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px -18px oklch(0.69 0.135 232 / 0.6);
+.chip:hover,
+.chip:focus-visible {
+  opacity: 1;
+  filter: none;
+  transform: translateY(-3px) scale(1.04);
 }
 
 .chip img {
@@ -96,6 +99,6 @@
   }
 
   .chip {
-    height: 68px;
+    height: 56px;
   }
 }

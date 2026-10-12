@@ -3,15 +3,21 @@
 // `logo`: logotipo en /public/logos/ (se muestra en el carrusel de proyectos).
 // `device`: 'desktop' o 'mobile' (las capturas móviles se muestran dentro de un marco de celular).
 
-const shot = (slug, file, label, device = 'desktop') => ({
-  src: `/proyectos/${slug}/${file}.webp`,
-  label,
-  device,
-});
+const shot = (slug, file, label, device = 'desktop') => {
+  const base = `/proyectos/${slug}/${file}`;
+  return {
+    src: `${base}.webp`,
+    // Las capturas de escritorio tienen versión de alta resolución para pantallas grandes o retina.
+    srcSet: device === 'desktop' ? `${base}.webp 1440w, ${base}@2x.webp 2400w` : undefined,
+    thumb: `${base}.thumb.webp`,
+    label,
+    device,
+  };
+};
 
 export const featuredProject = {
   slug: 'vasam',
-  logo: '/logos/vasam.webp',
+  logo: '/logos/vasam.png',
   name: 'VASAM Petshop',
   url: 'https://www.vasampetshop.com',
   domain: 'vasampetshop.com',
@@ -58,7 +64,6 @@ export const featuredProject = {
     shot('vasam', 'tienda', 'Tienda en línea'),
     shot('vasam', 'loki', 'Loki, asistente con IA'),
     shot('vasam', 'producto', 'Detalle de producto'),
-    shot('vasam', 'tienda-movil', 'Tienda en el celular', 'mobile'),
     shot('vasam', 'servicios', 'Estética canina'),
     shot('vasam', 'admin', 'Panel de ventas'),
     shot('vasam', 'pedidos', 'Gestión de pedidos'),
@@ -85,7 +90,6 @@ export const projects = [
     stack: ['Next.js 16', 'React 19', 'TypeScript', 'Supabase', 'PostgreSQL + RLS'],
     shots: [
       shot('credicontrol', 'dashboard', 'Panel del dueño'),
-      shot('credicontrol', 'ruta-movil', 'Ruta del cobrador', 'mobile'),
       shot('credicontrol', 'prestamos', 'Cartera de préstamos'),
       shot('credicontrol', 'prestamo-detalle', 'Detalle y cronograma'),
       shot('credicontrol', 'reportes', 'Reportes'),
@@ -95,7 +99,7 @@ export const projects = [
   },
   {
     slug: 'lumen',
-    logo: '/logos/lumen.webp',
+    logo: '/logos/lumen.png',
     name: 'LUMEN',
     url: '',
     place: 'Colombia',
@@ -120,7 +124,7 @@ export const projects = [
   },
   {
     slug: 'la-felicida',
-    logo: '/logos/la-felicida.webp',
+    logo: '/logos/la-felicida.png',
     name: 'La Felicidá',
     url: '',
     place: 'Pueblo Bello, Sierra Nevada',
@@ -140,7 +144,7 @@ export const projects = [
       shot('la-felicida', 'cafe', 'Café de origen'),
       shot('la-felicida', 'ediciones', 'Ediciones especiales'),
       shot('la-felicida', 'mochilas', 'Mochilas con pensamiento'),
-      shot('la-felicida', 'inicio-movil', 'Versión móvil', 'mobile'),
+      shot('la-felicida', 'experiencias', 'Experiencias en la finca'),
     ],
   },
   {
@@ -162,7 +166,6 @@ export const projects = [
     stack: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS 4', 'Supabase'],
     shots: [
       shot('tienda-did', 'catalogo', 'Catálogo'),
-      shot('tienda-did', 'inicio-movil', 'En el celular', 'mobile'),
       shot('tienda-did', 'admin', 'Panel de administración'),
       shot('tienda-did', 'productos', 'Gestión de productos'),
     ],
