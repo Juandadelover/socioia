@@ -6,10 +6,10 @@
   <circle cx="24" cy="35" r="1" fill="#059669"/>
   
   <!-- Texto "TIENDA DID" -->
-  <text x="55" y="30" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#0F172A">
+  <text x="55" y="30" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#F1F5F9">
     TIENDA
   </text>
-  <text x="55" y="48" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#059669">
+  <text x="55" y="48" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#34D399">
     DID
   </text>
 </svg>

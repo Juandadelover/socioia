@@ -1,6 +1,6 @@
 import styles from './Frames.module.css';
 
-export const BrowserFrame = ({ src, alt, eager = false, className = '' }) => (
+export const BrowserFrame = ({ src, srcSet, sizes, alt, eager = false, className = '' }) => (
   <figure className={`${styles.browser} ${className}`}>
     <div className={styles.chrome} aria-hidden="true">
       <span />
@@ -9,6 +9,8 @@ export const BrowserFrame = ({ src, alt, eager = false, className = '' }) => (
     </div>
     <img
       src={src}
+      srcSet={srcSet}
+      sizes={srcSet ? sizes || '(min-width: 1240px) 1100px, 100vw' : undefined}
       alt={alt}
       width="1440"
       height="900"
@@ -24,8 +26,8 @@ export const PhoneFrame = ({ src, alt, eager = false, className = '' }) => (
     <img
       src={src}
       alt={alt}
-      width="640"
-      height="1385"
+      width="780"
+      height="1688"
       loading={eager ? 'eager' : 'lazy'}
       decoding="async"
     />

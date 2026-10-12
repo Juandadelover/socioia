@@ -49,7 +49,11 @@ const Gallery = ({ shots, projectName, compact = false }) => {
           {current.device === 'mobile' ? (
             <PhoneFrame src={current.src} alt={`${projectName}: ${current.label}`} className={styles.phone} />
           ) : (
-            <BrowserFrame src={current.src} alt={`${projectName}: ${current.label}`} className={styles.browser} />
+            <BrowserFrame
+              src={current.src}
+              srcSet={current.srcSet}
+              sizes={compact ? '(min-width: 920px) 640px, 100vw' : '(min-width: 1240px) 1100px, 100vw'}
+              alt={`${projectName}: ${current.label}`} className={styles.browser} />
           )}
         </div>
         <div className={styles.controls}>
@@ -80,7 +84,7 @@ const Gallery = ({ shots, projectName, compact = false }) => {
             onClick={() => setActive(i)}
           >
             <span className={styles.thumb} data-device={s.device}>
-              <img src={s.src} alt="" loading="lazy" decoding="async" />
+              <img src={s.thumb || s.src} alt="" loading="lazy" decoding="async" />
             </span>
             <span className={styles.tabLabel}>{s.label}</span>
           </button>

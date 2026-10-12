@@ -11,16 +11,6 @@
   margin-bottom: clamp(2rem, 4vw, 3.5rem);
 }
 
-.tag {
-  display: inline-block;
-  padding: 0.35rem 0.8rem;
-  border-radius: 999px;
-  background: var(--amber);
-  color: oklch(0.25 0.05 70);
-  font-size: var(--step--1);
-  font-weight: 700;
-  margin-bottom: 1.25rem;
-}
 
 .name {
   font-size: var(--step-5);

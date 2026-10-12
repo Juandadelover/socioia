@@ -10,7 +10,6 @@ const FeaturedCase = () => (
     <div className="wrap">
       <header id={p.slug} className={styles.head}>
         <div data-reveal>
-          <p className={styles.tag}>Proyecto insignia</p>
           <h2 id={`${p.slug}-title`} className={styles.name}>
             {p.name}
           </h2>

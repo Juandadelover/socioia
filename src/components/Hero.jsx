@@ -44,6 +44,8 @@ const Hero = () => (
         <BrowserFrame
           eager
           src={desktopShot.src}
+          srcSet={desktopShot.srcSet}
+          sizes="(min-width: 960px) 600px, 100vw"
           alt={`Tienda en línea de ${p.name} con catálogo para perros y gatos`}
           className={styles.desktop}
         />
@@ -57,7 +59,7 @@ const Hero = () => (
         </div>
         <span className={styles.badge}>
           <span className={styles.dot} aria-hidden="true" />
-          Proyecto insignia · {p.name}
+          {p.name} · Tienda en línea con IA
         </span>
       </a>
     </div>
