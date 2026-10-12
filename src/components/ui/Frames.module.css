@@ -1,0 +1,49 @@
+.browser {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--ink-850);
+  border: 1px solid var(--line-strong);
+  box-shadow:
+    0 1px 0 oklch(1 0 0 / 0.06) inset,
+    0 30px 80px -30px oklch(0.05 0.03 240 / 0.9);
+}
+
+.chrome {
+  display: flex;
+  gap: 6px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  background: var(--ink-900);
+}
+
+.chrome span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--ink-800);
+}
+
+.browser img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+}
+
+.phone {
+  margin: 0;
+  padding: 7px;
+  border-radius: 34px;
+  background: var(--ink-1000);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 30px 70px -25px oklch(0.05 0.03 240 / 0.95);
+}
+
+.phone img {
+  width: 100%;
+  aspect-ratio: 9 / 19.5;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 27px;
+}

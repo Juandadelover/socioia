@@ -1,103 +1,75 @@
-import { useState, useEffect } from 'react';
-import { Menu, X } from './Icons';
+import { useEffect, useState } from 'react';
+import Logo from './ui/Logo';
+import { Close, Menu, WhatsApp } from './ui/icons';
+import { NAV_LINKS, whatsappLink } from '../data/site';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const navLinks = [
-    { to: 'services', label: 'Servicios' },
-    { to: 'process', label: 'Proceso' },
-    { to: 'pricing', label: 'Precios' },
-    { to: 'faq', label: 'FAQ' }
-  ];
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setMobileMenuOpen(false);
-    }
-  };
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    const onKey = (e) => e.key === 'Escape' && setOpen(false);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open]);
 
   return (
-    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
-      <div className={styles.container}>
-        <div className={styles.logo} onClick={() => scrollToSection('hero')}>
-          <span className={styles.logoText}>Socio</span>
-          <span className={styles.logoGold}>IA</span>
-        </div>
-
-        {/* Desktop Nav */}
-        <div className={styles.desktopNav}>
-          {navLinks.map(link => (
-            <button
-              key={link.to}
-              onClick={() => scrollToSection(link.to)}
-              className={styles.navLink}
-            >
-              {link.label}
-            </button>
-          ))}
-        </div>
-
-        <a
-          href="https://wa.me/573113678555?text=Hola%20SocioIA%2C%20quiero%20hablar%20con%20un%20socio"
-          className={styles.ctaButton}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Hablar con un socio
+    <header className={`${styles.header} ${scrolled || open ? styles.solid : ''}`}>
+      <nav className={`wrap ${styles.nav}`} aria-label="Principal">
+        <a href="#inicio" className={styles.brand} onClick={() => setOpen(false)}>
+          <Logo className={styles.logo} />
         </a>
 
-        {/* Mobile Menu Button */}
-        <button
-          className={styles.mobileMenuBtn}
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle menu"
-          aria-expanded={mobileMenuOpen}
-        >
-          {mobileMenuOpen ? (
-            <X className={styles.menuIcon} />
-          ) : (
-            <Menu className={styles.menuIcon} />
-          )}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className={styles.mobileMenu}>
-          {navLinks.map(link => (
-            <button
-              key={link.to}
-              onClick={() => scrollToSection(link.to)}
-              className={styles.mobileLink}
-            >
-              {link.label}
-            </button>
+        <ul id="menu" className={`${styles.links} ${open ? styles.open : ''}`}>
+          {NAV_LINKS.map((l) => (
+            <li key={l.href}>
+              <a href={l.href} onClick={() => setOpen(false)}>
+                {l.label}
+              </a>
+            </li>
           ))}
+          <li className={styles.mobileCta}>
+            <a className="btn btn-primary" href="#contacto" onClick={() => setOpen(false)}>
+              Cotiza tu proyecto
+            </a>
+          </li>
+        </ul>
+
+        <div className={styles.actions}>
           <a
-            href="https://wa.me/573113678555?text=Hola%20SocioIA%2C%20quiero%20hablar%20con%20un%20socio"
-            className={styles.mobileCta}
-            onClick={() => setMobileMenuOpen(false)}
+            className={styles.wa}
+            href={whatsappLink()}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Escríbenos por WhatsApp"
           >
-            Hablar con un socio
+            <WhatsApp />
           </a>
+          <a className={`btn btn-primary ${styles.cta}`} href="#contacto">
+            Cotiza tu proyecto
+          </a>
+          <button
+            type="button"
+            className={styles.toggle}
+            aria-expanded={open}
+            aria-controls="menu"
+            aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <Close /> : <Menu />}
+          </button>
         </div>
-      )}
-    </nav>
+      </nav>
+    </header>
   );
 };
 

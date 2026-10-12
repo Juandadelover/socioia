@@ -1,49 +1,30 @@
-# SocioIA Landing Page
+# SocioIA
 
-Premium landing page for SocioIA - AI-powered business solutions in Valledupar, Colombia.
+Sitio web de SocioIA: desarrollo de software a la medida, web, apps e inteligencia artificial. Medellín y Valledupar, Colombia.
 
-## Tech Stack
+## Stack
 
-- React 18
-- Vite
-- Framer Motion
-- React Hook Form
-- Formspree
+- React 18 + Vite
+- CSS Modules con tokens en OKLCH (`src/styles/global.css`)
+- Fuentes autoalojadas: Bricolage Grotesque y Hanken Grotesk (Fontsource)
+- React Hook Form para el formulario de contacto (abre WhatsApp con el mensaje armado)
 
-## Development
+## Desarrollo
 
 ```bash
-# Install dependencies
 npm install
-
-# Start dev server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
+npm run dev      # servidor local
+npm run build    # build de producción en dist/
+npm run preview  # sirve el build
 ```
 
-## Configuration Required
+## Portafolio
 
-Before deployment:
+Los proyectos se editan en `src/data/projects.js`:
 
-1. ✅ **WhatsApp Number:** Configured to 3113678555
-2. ✅ **Contact Email:** Set to aquilarjuan123@gmail.com  
-3. ✅ **Form Integration:** Uses mailto link (no external service needed)
-4. **Domain:** Configure socioia.co DNS for deployment
+- `featuredProject` es el caso destacado (CrédiControl).
+- `projects` es el resto del portafolio, en el orden en que aparece.
+- `url`: dominio público del proyecto. Mientras esté vacío no se muestra el botón "Ver proyecto en vivo".
+- `shots`: capturas en `public/proyectos/<slug>/` (WebP, 1440 px de ancho en escritorio y 640 px en móvil).
 
-## Deployment
-
-Deploy to Vercel:
-1. Push to GitHub
-2. Import to Vercel
-3. Configure custom domain
-4. Auto-deploy on push
-
-## License
-
-Proprietary - SocioIA 2026
-# socioia
+Datos de contacto y enlaces en `src/data/site.js`.

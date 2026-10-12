@@ -1,0 +1,172 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: auto -10% -40% -10%;
+  height: 80%;
+  z-index: -1;
+  background: radial-gradient(closest-side, oklch(0.69 0.135 232 / 0.18), transparent 75%);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
+}
+
+.copy h2 {
+  font-size: var(--step-4);
+  font-weight: 800;
+  letter-spacing: -0.022em;
+}
+
+.copy h2 span {
+  color: var(--cyan);
+}
+
+.lead {
+  margin-top: 1.25rem;
+  color: var(--text-2);
+  font-size: var(--step-1);
+  line-height: 1.5;
+  max-width: 34rem;
+}
+
+.channels {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.channels li {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: var(--text-2);
+}
+
+.channels svg {
+  width: 20px;
+  height: 20px;
+  color: var(--cyan);
+  flex: none;
+}
+
+.channels a {
+  color: var(--text);
+  font-weight: 550;
+  word-break: break-word;
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s var(--ease-out);
+}
+
+.channels a:hover {
+  text-decoration-color: var(--cyan);
+}
+
+.card {
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  border-radius: var(--radius-lg);
+  background: var(--ink-900);
+  border: 1px solid var(--line);
+}
+
+.form {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.field label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.optional {
+  font-weight: 450;
+  color: var(--text-3);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid var(--line-strong);
+  background: var(--ink-950);
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s var(--ease-out);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--text-3);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px oklch(0.69 0.135 232 / 0.25);
+}
+
+.field input[aria-invalid='true'] {
+  border-color: oklch(0.68 0.18 25);
+}
+
+.error {
+  color: oklch(0.78 0.13 25);
+  font-size: 0.85rem;
+}
+
+.submit {
+  width: 100%;
+  margin-top: 0.4rem;
+}
+
+.note {
+  font-size: 0.85rem;
+  color: var(--text-3);
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
