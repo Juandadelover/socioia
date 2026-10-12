@@ -1,6 +1,6 @@
 // Portafolio de SocioIA. Las capturas viven en /public/proyectos/<slug>/.
 // `url`: dominio público del proyecto. Si está vacío, no se muestra el botón "Ver proyecto en vivo".
-// `logo`: logotipo en /public/logos/ (se muestra en el carrusel de proyectos).
+// `logo`: logotipo en /public/logos/ (se muestra en el carrusel de proyectos); `logoScale` opcional.
 // `device`: 'desktop' o 'mobile' (las capturas móviles se muestran dentro de un marco de celular).
 
 const shot = (slug, file, label, device = 'desktop') => {
@@ -18,6 +18,7 @@ const shot = (slug, file, label, device = 'desktop') => {
 export const featuredProject = {
   slug: 'vasam',
   logo: '/logos/vasam.png',
+  logoScale: 1.5, // logo cuadrado: se agranda para igualar el peso visual de los horizontales
   name: 'VASAM Petshop',
   url: 'https://www.vasampetshop.com',
   domain: 'vasampetshop.com',
@@ -64,9 +65,19 @@ export const featuredProject = {
     shot('vasam', 'tienda', 'Tienda en línea'),
     shot('vasam', 'loki', 'Loki, asistente con IA'),
     shot('vasam', 'producto', 'Detalle de producto'),
+    shot('vasam', 'checkout', 'Finalizar pedido'),
     shot('vasam', 'servicios', 'Estética canina'),
+    shot('vasam', 'nosotros', 'Nosotros'),
+    shot('vasam', 'contacto', 'Contacto'),
+    shot('vasam', 'blog', 'Blog'),
     shot('vasam', 'admin', 'Panel de ventas'),
     shot('vasam', 'pedidos', 'Gestión de pedidos'),
+    shot('vasam', 'pedido-detalle', 'Detalle y verificación de pago'),
+    shot('vasam', 'productos-admin', 'Catálogo e inventario'),
+    shot('vasam', 'clientes', 'Clientes'),
+    shot('vasam', 'servicios-admin', 'Servicios de estética'),
+    shot('vasam', 'loki-documentos', 'Lo que sabe Loki'),
+    shot('vasam', 'loki-preguntas', 'Preguntas sin respuesta'),
   ],
 };
 

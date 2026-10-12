@@ -3,13 +3,36 @@ import { BrowserFrame, PhoneFrame } from './Frames';
 import { ArrowLeft, ArrowRight } from './icons';
 import styles from './Gallery.module.css';
 
+const AUTOPLAY_MS = 10000;
+
 // Visor de capturas con pestañas (patrón ARIA tabs, flechas para navegar).
+// Avanza solo cada 10 s mientras está en pantalla; se pausa con el cursor o el foco encima
+// y no corre si el usuario prefiere menos movimiento.
 const Gallery = ({ shots, projectName, compact = false }) => {
   const [active, setActive] = useState(0);
+  const [hovered, setHovered] = useState(false);
+  const [inView, setInView] = useState(false);
+  const [reduced, setReduced] = useState(false);
+  const rootRef = useRef(null);
   const tabsRef = useRef([]);
   const listRef = useRef(null);
   const id = useId();
   const current = shots[active];
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setReduced(mq.matches);
+    const onChange = (e) => setReduced(e.matches);
+    mq.addEventListener?.('change', onChange);
+    const io = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0.35 });
+    if (rootRef.current) io.observe(rootRef.current);
+    return () => {
+      mq.removeEventListener?.('change', onChange);
+      io.disconnect();
+    };
+  }, []);
+
+  const playing = inView && !hovered && !reduced && shots.length > 1;
 
   // Mantiene visible la miniatura activa sin mover la página en vertical.
   useEffect(() => {
@@ -38,7 +61,16 @@ const Gallery = ({ shots, projectName, compact = false }) => {
   };
 
   return (
-    <div className={`${styles.gallery} ${compact ? styles.compact : ''}`}>
+    <div
+      ref={rootRef}
+      className={`${styles.gallery} ${compact ? styles.compact : ''}`}
+      data-playing={playing ? 'true' : 'false'}
+      style={{ '--autoplay': `${AUTOPLAY_MS}ms` }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocus={() => setHovered(true)}
+      onBlur={(e) => !e.currentTarget.contains(e.relatedTarget) && setHovered(false)}
+    >
       <div
         className={styles.stage}
         role="tabpanel"
@@ -85,6 +117,15 @@ const Gallery = ({ shots, projectName, compact = false }) => {
           >
             <span className={styles.thumb} data-device={s.device}>
               <img src={s.thumb || s.src} alt="" loading="lazy" decoding="async" />
+              {i === active && shots.length > 1 && !reduced && (
+                // El avance lo dispara el final de esta barra: pausa y reanuda en sincronía con ella.
+                <span
+                  key={active}
+                  className={styles.progress}
+                  aria-hidden="true"
+                  onAnimationEnd={() => setActive((n) => (n + 1) % shots.length)}
+                />
+              )}
             </span>
             <span className={styles.tabLabel}>{s.label}</span>
           </button>

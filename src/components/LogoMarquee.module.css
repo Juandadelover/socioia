@@ -15,6 +15,9 @@
 
 .viewport {
   overflow: hidden;
+  /* margen para los logos escalados y el efecto hover sin recortes */
+  padding-block: 1rem;
+  margin-block: -1rem;
   mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
 }
@@ -38,8 +41,9 @@
 }
 
 .chip {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: clamp(150px, 15vw, 210px);
   height: clamp(56px, 5.5vw, 76px);
   padding-inline: 0.75rem;
@@ -59,8 +63,10 @@
 }
 
 .chip img {
+  /* altura fija y ancho automático: los logos cuadrados (VASAM) se escalan completos */
+  height: calc(100% * var(--logo-scale, 1));
+  width: auto;
   max-width: 100%;
-  max-height: 100%;
   object-fit: contain;
 }
 

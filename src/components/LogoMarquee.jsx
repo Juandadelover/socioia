@@ -19,6 +19,7 @@ const LogoMarquee = () => (
                   className={styles.chip}
                   tabIndex={copy > 0 ? -1 : undefined}
                   aria-label={`Ver proyecto ${p.name}`}
+                  style={p.logoScale ? { '--logo-scale': p.logoScale } : undefined}
                 >
                   <img src={p.logo} alt="" decoding="async" />
                 </a>
