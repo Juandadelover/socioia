@@ -16,7 +16,7 @@ if (!template.includes('<!--app-head-->') || !template.includes('<!--app-html-->
 for (const route of routes) {
   const { html, head } = render(route);
   const page = template.replace('<!--app-head-->', head).replace('<!--app-html-->', html);
-  // /portafolio/lumen -> dist/portafolio/lumen.html (Vercel lo sirve sin extensión con cleanUrls).
+  // /portafolio/lumen -> dist/portafolio/lumen.html (vercel.json reescribe la URL sin extensión a este archivo).
   const out = route.path === '/' ? path.join(dist, 'index.html') : path.join(dist, `${route.path}.html`);
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, page);

@@ -1,7 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/portafolio/:slug", "destination": "/portafolio/:slug.html" },
+    { "source": "/servicios/:slug", "destination": "/servicios/:slug.html" }
+  ],
   "headers": [
     {
       "source": "/proyectos/(.*)",
