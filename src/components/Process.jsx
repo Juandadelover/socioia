@@ -26,7 +26,7 @@ const Process = () => (
         <p className="kicker">Cómo trabajamos</p>
         <h2 id="proceso-title">De la idea al software que usas cada día.</h2>
       </div>
-      <ol className={styles.steps}>
+      <ol className={styles.steps} data-reveal>
         {STEPS.map((s, i) => (
           <li key={s.title} data-reveal style={{ '--reveal-delay': `${i * 90}ms` }}>
             <span className={styles.n}>{i + 1}</span>

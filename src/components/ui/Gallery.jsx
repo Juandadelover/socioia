@@ -1,13 +1,28 @@
-import { useId, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { BrowserFrame, PhoneFrame } from './Frames';
+import { ArrowLeft, ArrowRight } from './icons';
 import styles from './Gallery.module.css';
 
 // Visor de capturas con pestañas (patrón ARIA tabs, flechas para navegar).
 const Gallery = ({ shots, projectName, compact = false }) => {
   const [active, setActive] = useState(0);
   const tabsRef = useRef([]);
+  const listRef = useRef(null);
   const id = useId();
   const current = shots[active];
+
+  // Mantiene visible la miniatura activa sin mover la página en vertical.
+  useEffect(() => {
+    const list = listRef.current;
+    const tab = tabsRef.current[active];
+    if (!list || !tab) return;
+    const left = tab.offsetLeft; // .tabs es position: relative
+    if (left < list.scrollLeft || left + tab.offsetWidth > list.scrollLeft + list.clientWidth) {
+      list.scrollTo({ left: left - 8, behavior: 'smooth' });
+    }
+  }, [active]);
+
+  const go = (delta) => setActive((i) => (i + delta + shots.length) % shots.length);
 
   const onKeyDown = (e) => {
     const last = shots.length - 1;
@@ -37,9 +52,20 @@ const Gallery = ({ shots, projectName, compact = false }) => {
             <BrowserFrame src={current.src} alt={`${projectName}: ${current.label}`} className={styles.browser} />
           )}
         </div>
+        <div className={styles.controls}>
+          <button type="button" className={styles.arrow} onClick={() => go(-1)} aria-label="Pantalla anterior">
+            <ArrowLeft />
+          </button>
+          <span className={styles.count} aria-hidden="true">
+            {active + 1} / {shots.length}
+          </span>
+          <button type="button" className={styles.arrow} onClick={() => go(1)} aria-label="Pantalla siguiente">
+            <ArrowRight />
+          </button>
+        </div>
       </div>
 
-      <div className={styles.tabs} role="tablist" aria-label={`Pantallas de ${projectName}`} onKeyDown={onKeyDown}>
+      <div ref={listRef} className={styles.tabs} role="tablist" aria-label={`Pantallas de ${projectName}`} onKeyDown={onKeyDown}>
         {shots.map((s, i) => (
           <button
             key={s.src}

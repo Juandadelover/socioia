@@ -1,5 +1,6 @@
 // Portafolio de SocioIA. Las capturas viven en /public/proyectos/<slug>/.
 // `url`: dominio público del proyecto. Si está vacío, no se muestra el botón "Ver proyecto en vivo".
+// `logo`: logotipo en /public/logos/ (se muestra en el carrusel de proyectos).
 // `device`: 'desktop' o 'mobile' (las capturas móviles se muestran dentro de un marco de celular).
 
 const shot = (slug, file, label, device = 'desktop') => ({
@@ -9,72 +10,92 @@ const shot = (slug, file, label, device = 'desktop') => ({
 });
 
 export const featuredProject = {
-  slug: 'credicontrol',
-  name: 'CrédiControl',
-  url: '',
-  category: 'Plataforma SaaS · Fintech',
-  headline: 'El cobro diario de un prestamista, sin cuaderno.',
+  slug: 'vasam',
+  logo: '/logos/vasam.webp',
+  name: 'VASAM Petshop',
+  url: 'https://www.vasampetshop.com',
+  domain: 'vasampetshop.com',
+  place: 'Valledupar',
+  category: 'E-commerce · Estética canina · IA',
+  headline: 'La tienda de mascotas de Valledupar, en línea y con su propio asistente de IA.',
   summary:
-    'Los negocios de préstamos diarios en Colombia llevan su cartera en cuadernos: rutas en papel, cuentas a mano al final del día y cero visibilidad de la mora. Construimos CrédiControl, una plataforma multiempresa que digitaliza toda la operación, desde que se presta hasta que se cierra la caja.',
+    'VASAM es una tienda de mascotas con peluquería canina y felina desde 2018. Necesitaba vender productos en línea y atender a sus clientes sin depender de responder mensajes uno a uno. Construimos su tienda completa, su panel de administración y a Loki, el asistente con inteligencia artificial que atiende a cada cliente.',
   pillars: [
     {
-      title: 'Ruta del cobrador en el celular',
-      text: 'Cada cobrador ve sus cobros del día, registra pagos en efectivo, Nequi o transferencia y envía el comprobante al cliente por WhatsApp.',
+      title: 'Tienda en línea completa',
+      text: 'Catálogo para perros y gatos con filtros, carrito, checkout con varios medios de pago y seguimiento del pedido para el cliente.',
     },
     {
-      title: 'Cartera y mora en tiempo real',
-      text: 'El dueño ve recaudo, cartera activa, clientes en mora y avance de cada ruta mientras ocurre, no al final de la semana.',
+      title: 'Estética canina y felina',
+      text: 'Servicios de grooming presentados con fotos reales del trabajo, para que el cliente conozca el resultado y agende.',
     },
     {
-      title: 'Préstamos con cronograma automático',
-      text: 'Cuota fija, solo interés o sobre saldo, con días de cobro configurables y su cronograma generado al instante.',
+      title: 'Panel de administración',
+      text: 'Ventas, pedidos con verificación de pago, clientes, productos e inventario desde un solo lugar.',
     },
     {
-      title: 'Caja, reportes y multiempresa',
-      text: 'Cierre de caja por cobrador, reportes exportables y un panel de administración para gestionar varias empresas en la misma plataforma.',
+      title: 'Loki aprende del negocio',
+      text: 'El equipo administra lo que Loki sabe y revisa las preguntas que no pudo responder para completarlas.',
     },
   ],
-  stack: ['Next.js 16', 'React 19', 'TypeScript', 'Supabase', 'PostgreSQL + RLS', 'Tailwind CSS'],
+  assistant: {
+    name: 'Loki',
+    title: 'Loki, el asistente con IA que atiende como alguien de la tienda.',
+    text: 'Loki conoce el catálogo, los servicios y los horarios de VASAM. Recomienda productos según la mascota, responde dudas a cualquier hora y, cuando hace falta una persona, pasa la conversación a WhatsApp.',
+    points: [
+      'Responde con la información real del negocio, no con respuestas genéricas',
+      'Recomienda productos según la especie, el tamaño y la edad de la mascota',
+      'Enlaza directo a los productos de la tienda',
+      'Atiende a toda hora y deriva a un asesor cuando el cliente lo pide',
+    ],
+    shots: [
+      shot('vasam', 'loki-movil', 'Loki recomendando productos', 'mobile'),
+      shot('vasam', 'loki-horarios-movil', 'Loki respondiendo horarios', 'mobile'),
+    ],
+  },
+  stack: ['React', 'TypeScript', 'Supabase', 'Edge Functions', 'IA generativa (RAG)', 'Tailwind CSS'],
   shots: [
-    shot('credicontrol', 'dashboard', 'Panel del dueño'),
-    shot('credicontrol', 'ruta-movil', 'Ruta del cobrador', 'mobile'),
-    shot('credicontrol', 'prestamos', 'Cartera de préstamos'),
-    shot('credicontrol', 'prestamo-detalle', 'Detalle y cronograma'),
-    shot('credicontrol', 'cobrador-movil', 'Inicio del cobrador', 'mobile'),
-    shot('credicontrol', 'reportes', 'Reportes'),
-    shot('credicontrol', 'mora', 'Panel de mora'),
-    shot('credicontrol', 'caja', 'Caja diaria'),
-    shot('credicontrol', 'super-admin', 'Administración multiempresa'),
+    shot('vasam', 'tienda', 'Tienda en línea'),
+    shot('vasam', 'loki', 'Loki, asistente con IA'),
+    shot('vasam', 'producto', 'Detalle de producto'),
+    shot('vasam', 'tienda-movil', 'Tienda en el celular', 'mobile'),
+    shot('vasam', 'servicios', 'Estética canina'),
+    shot('vasam', 'admin', 'Panel de ventas'),
+    shot('vasam', 'pedidos', 'Gestión de pedidos'),
   ],
 };
 
 export const projects = [
   {
-    slug: 'vasam',
-    name: 'VASAM Petshop',
+    slug: 'credicontrol',
+    logo: '/logos/credicontrol.svg',
+    name: 'CrédiControl',
     url: '',
-    place: 'Valledupar',
-    category: 'E-commerce · Servicios',
-    headline: 'Tienda en línea y estética canina en un mismo lugar.',
+    place: 'Colombia',
+    category: 'Plataforma SaaS · Fintech',
+    headline: 'El cobro diario de un prestamista, sin cuaderno.',
     summary:
-      'Una tienda de mascotas con peluquería necesitaba vender productos y llenar su agenda de grooming sin depender de los mensajes uno a uno. Le construimos su tienda en línea con panel de administración y un asistente con IA que recomienda productos.',
+      'Los negocios de préstamos diarios llevan su cartera en cuadernos: rutas en papel, cuentas a mano y cero visibilidad de la mora. CrédiControl digitaliza toda la operación, desde que se presta hasta que se cierra la caja, para varias empresas en la misma plataforma.',
     features: [
-      'Catálogo para perros y gatos con carrito y checkout',
-      'Seguimiento de pedidos para el cliente',
-      'Asistente con IA entrenado con el catálogo y los servicios',
-      'Panel admin: pedidos, clientes, productos y métricas de venta',
+      'Ruta del cobrador en el celular con registro de pagos y comprobante',
+      'Cartera, recaudo y mora en tiempo real para el dueño',
+      'Préstamos con cronograma automático y días de cobro configurables',
+      'Cierre de caja, reportes y administración multiempresa',
     ],
-    stack: ['React', 'TypeScript', 'Supabase', 'Edge Functions', 'IA (RAG)'],
+    stack: ['Next.js 16', 'React 19', 'TypeScript', 'Supabase', 'PostgreSQL + RLS'],
     shots: [
-      shot('vasam', 'tienda', 'Tienda'),
-      shot('vasam', 'producto', 'Detalle de producto'),
-      shot('vasam', 'admin', 'Panel de ventas'),
-      shot('vasam', 'pedidos', 'Gestión de pedidos'),
-      shot('vasam', 'tienda-movil', 'Tienda en el celular', 'mobile'),
+      shot('credicontrol', 'dashboard', 'Panel del dueño'),
+      shot('credicontrol', 'ruta-movil', 'Ruta del cobrador', 'mobile'),
+      shot('credicontrol', 'prestamos', 'Cartera de préstamos'),
+      shot('credicontrol', 'prestamo-detalle', 'Detalle y cronograma'),
+      shot('credicontrol', 'reportes', 'Reportes'),
+      shot('credicontrol', 'mora', 'Panel de mora'),
+      shot('credicontrol', 'super-admin', 'Multiempresa'),
     ],
   },
   {
     slug: 'lumen',
+    logo: '/logos/lumen.webp',
     name: 'LUMEN',
     url: '',
     place: 'Colombia',
@@ -99,6 +120,7 @@ export const projects = [
   },
   {
     slug: 'la-felicida',
+    logo: '/logos/la-felicida.webp',
     name: 'La Felicidá',
     url: '',
     place: 'Pueblo Bello, Sierra Nevada',
@@ -123,6 +145,7 @@ export const projects = [
   },
   {
     slug: 'tienda-did',
+    logo: '/logos/tienda-did.svg',
     name: 'Tienda DID',
     url: '',
     place: 'Bosconia, Cesar',

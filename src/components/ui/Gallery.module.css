@@ -1,7 +1,18 @@
 .gallery {
+  /* El visor nunca es más alto que la pantalla: en laptops (≈ 650 px útiles) la captura
+     y sus miniaturas caben completas sin hacer scroll. 16 / 10.9 = proporción del visor. */
+  --fit: calc((100vh - var(--nav-h) - 11rem) * 16 / 10.9);
   display: grid;
   gap: 1rem;
   min-width: 0;
+  width: min(100%, var(--fit));
+  margin-inline: auto;
+}
+
+@supports (height: 100svh) {
+  .gallery {
+    --fit: calc((100svh - var(--nav-h) - 11rem) * 16 / 10.9);
+  }
 }
 
 .stage {
@@ -42,6 +53,69 @@
   height: 100%;
 }
 
+.controls {
+  position: absolute;
+  right: clamp(0.6rem, 1.6vw, 1rem);
+  bottom: clamp(0.6rem, 1.6vw, 1rem);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem;
+  border-radius: 999px;
+  background: oklch(0.13 0.018 240 / 0.82);
+  border: 1px solid var(--line-strong);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.3s var(--ease-out),
+    transform 0.3s var(--ease-out);
+}
+
+.stage:hover .controls,
+.controls:focus-within {
+  opacity: 1;
+  transform: none;
+}
+
+@media (hover: none) {
+  .controls {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: background-color 0.2s var(--ease-out);
+}
+
+.arrow:hover {
+  background: var(--ink-800);
+}
+
+.arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+.count {
+  min-width: 3.2rem;
+  text-align: center;
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-2);
+}
+
 @keyframes enter {
   from {
     opacity: 0;
@@ -54,6 +128,7 @@
 }
 
 .tabs {
+  position: relative;
   display: flex;
   gap: 0.6rem;
   overflow-x: auto;
@@ -86,7 +161,8 @@
   opacity: 0.55;
   transition:
     opacity 0.3s var(--ease-out),
-    border-color 0.3s var(--ease-out);
+    border-color 0.3s var(--ease-out),
+    transform 0.3s var(--ease-out);
 }
 
 .thumb img {
@@ -109,6 +185,7 @@
 
 .tab:hover .thumb {
   opacity: 0.85;
+  transform: translateY(-2px);
 }
 
 .tab[aria-selected='true'] .thumb {
@@ -129,6 +206,10 @@
 }
 
 @media (max-width: 560px) {
+  .gallery {
+    width: 100%;
+  }
+
   .stage {
     aspect-ratio: 4 / 3.3;
   }
