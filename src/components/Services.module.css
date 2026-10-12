@@ -1,4 +1,6 @@
 .grid {
+  position: relative;
+  z-index: 0;
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
   gap: clamp(2.5rem, 6vw, 6rem);
@@ -23,11 +25,47 @@
 }
 
 .list > li {
+  position: relative;
   display: grid;
   grid-template-columns: 3rem minmax(0, 1fr) minmax(0, 13rem);
   gap: 1rem 1.5rem;
   padding-block: 1.9rem;
   border-top: 1px solid var(--line);
+}
+
+.list > li::before {
+  content: '';
+  position: absolute;
+  inset: 0 -1rem;
+  z-index: -1;
+  border-radius: 14px;
+  background: var(--ink-900);
+  opacity: 0;
+  transform: scaleY(0.92);
+  transition:
+    opacity 0.35s var(--ease-out),
+    transform 0.35s var(--ease-out);
+}
+
+.list > li:hover::before {
+  opacity: 1;
+  transform: none;
+}
+
+.list > li .n,
+.body h3 {
+  transition:
+    transform 0.35s var(--ease-out),
+    color 0.35s var(--ease-out);
+}
+
+.list > li:hover .n {
+  transform: translateX(4px);
+  color: var(--cyan-hi);
+}
+
+.list > li:hover h3 {
+  color: var(--cyan-hi);
 }
 
 .list > li:last-child {

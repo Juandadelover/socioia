@@ -188,6 +188,32 @@ ol {
   width: 1.1em;
   height: 1.1em;
   flex: none;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.btn:hover svg:last-child:not(:first-child) {
+  transform: translateX(3px);
+}
+
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Brillo que cruza el botón principal al pasar el cursor */
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 30%, oklch(1 0 0 / 0.35) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s var(--ease-out);
+}
+
+.btn-primary:hover::after {
+  transform: translateX(120%);
 }
 
 .btn-primary {
@@ -254,4 +280,12 @@ ol {
 .js [data-reveal].is-visible {
   opacity: 1;
   transform: none;
+}
+
+.js [data-reveal='scale'] {
+  transform: scale(0.94);
+}
+
+.js [data-reveal='left'] {
+  transform: translateX(-32px);
 }

@@ -19,7 +19,7 @@ const SIGNALS = [
 const Signals = () => (
   <section className={styles.section} aria-labelledby="senales-title">
     <div className={`wrap ${styles.grid}`}>
-      <div className={styles.lead} data-reveal>
+      <div className={styles.lead} data-reveal="scale">
         <p className={styles.big} aria-hidden="true">
           3
         </p>

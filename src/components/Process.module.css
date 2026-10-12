@@ -28,6 +28,17 @@
   right: 0;
   height: 1px;
   background: linear-gradient(90deg, var(--cyan), var(--line) 60%);
+  transform-origin: left;
+  transition: transform 1.6s var(--ease-out) 0.2s;
+}
+
+:global(.js) .steps:not(:global(.is-visible))::before {
+  transform: scaleX(0);
+}
+
+:global(.js) .steps[data-reveal] {
+  opacity: 1;
+  transform: none;
 }
 
 .steps li {
@@ -74,6 +85,11 @@
     width: 1px;
     height: auto;
     background: linear-gradient(180deg, var(--cyan), var(--line) 70%);
+    transform-origin: top;
+  }
+
+  :global(.js) .steps:not(:global(.is-visible))::before {
+    transform: scaleY(0);
   }
 
   .steps li {
