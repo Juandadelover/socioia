@@ -1,28 +1,34 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Problem from './components/Problem';
+import FeaturedCase from './components/FeaturedCase';
+import Projects from './components/Projects';
+import Signals from './components/Signals';
 import Services from './components/Services';
 import Process from './components/Process';
-import WhyUs from './components/WhyUs';
-import Testimonials from './components/Testimonials';
-import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
-import FinalCTA from './components/FinalCTA';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
+import useReveal from './hooks/useReveal';
 
 function App() {
+  useReveal();
+
   return (
     <>
+      <a className="skip-link" href="#contenido">
+        Saltar al contenido
+      </a>
       <Navbar />
-      <Hero />
-      <Problem />
-      <Services />
-      <Process />
-      <WhyUs />
-      <Testimonials />
-      <Pricing />
-      <FAQ />
-      <FinalCTA />
+      <main id="contenido">
+        <Hero />
+        <FeaturedCase />
+        <Projects />
+        <Signals />
+        <Services />
+        <Process />
+        <FAQ />
+        <Contact />
+      </main>
       <Footer />
     </>
   );

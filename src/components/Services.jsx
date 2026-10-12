@@ -1,64 +1,62 @@
-import React from 'react';
-import { Globe, Smartphone, Cpu, ArrowRight } from './Icons';
 import styles from './Services.module.css';
 
-const Services = () => {
-  return (
-    <section className={styles.section} id="services">
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <span className={styles.badge}>SERVICIOS</span>
-          <h2 className={styles.title}>
-            Soluciones de IA para tu negocio
-          </h2>
-        </div>
-        
-        <div className={styles.grid}>
-          <div className={styles.card}>
-            <div className={styles.iconContainer}>
-              <Globe className={styles.icon} />
-            </div>
-            <h3 className={styles.cardTitle}>Desarrollo Web IA</h3>
-            <p className={styles.cardText}>
-              Sitios web inteligentes con chatbots, recomendaciones personalizadas y análisis predictivo.
-            </p>
-            <div className={styles.price}>Desde $2,500,000 COP</div>
-            <a href="https://wa.me/573113678555" className={styles.cta}>
-              Cotizar proyecto <ArrowRight className={styles.ctaIcon} />
-            </a>
-          </div>
-          
-          <div className={styles.card}>
-            <div className={styles.iconContainer}>
-              <Cpu className={styles.icon} />
-            </div>
-            <h3 className={styles.cardTitle}>Agentes de IA</h3>
-            <p className={styles.cardText}>
-              Asistentes virtuales personalizados para atención al cliente, ventas y soporte técnico.
-            </p>
-            <div className={styles.price}>Desde $1,800,000 COP</div>
-            <a href="https://wa.me/573113678555" className={styles.cta}>
-              Cotizar proyecto <ArrowRight className={styles.ctaIcon} />
-            </a>
-          </div>
-          
-          <div className={styles.card}>
-            <div className={styles.iconContainer}>
-              <Smartphone className={styles.icon} />
-            </div>
-            <h3 className={styles.cardTitle}>Marketing Digital IA</h3>
-            <p className={styles.cardText}>
-              Campañas publicitarias optimizadas con IA, análisis de audiencias y automatización de procesos.
-            </p>
-            <div className={styles.price}>Desde $1,200,000 COP</div>
-            <a href="https://wa.me/573113678555" className={styles.cta}>
-              Cotizar proyecto <ArrowRight className={styles.ctaIcon} />
-            </a>
-          </div>
-        </div>
+const SERVICES = [
+  {
+    title: 'Software a la medida',
+    text: 'Sistemas de gestión, plataformas SaaS y paneles administrativos hechos para cómo trabaja tu equipo, con roles, permisos y reportes.',
+    tags: ['Sistemas internos', 'SaaS', 'Multiempresa'],
+  },
+  {
+    title: 'Desarrollo web y e-commerce',
+    text: 'Sitios de marca que cuentan tu historia y tiendas en línea con catálogo, carrito, pagos y panel para administrar pedidos.',
+    tags: ['Sitios de marca', 'Tiendas en línea', 'Catálogos'],
+  },
+  {
+    title: 'Apps móviles',
+    text: 'Aplicaciones para el equipo que trabaja en la calle: rutas, registros, cobros y evidencias desde el celular.',
+    tags: ['Apps web progresivas', 'Android e iOS'],
+  },
+  {
+    title: 'Inteligencia artificial aplicada',
+    text: 'Asistentes entrenados con la información de tu negocio, automatización de tareas repetitivas y análisis de datos para decidir mejor.',
+    tags: ['Asistentes con IA', 'Automatizaciones', 'Datos'],
+  },
+  {
+    title: 'Marketing digital con IA',
+    text: 'Estrategia, contenido y campañas apoyadas en IA para que la gente correcta encuentre lo que construimos.',
+    tags: ['Contenido', 'Campañas', 'Analítica'],
+  },
+];
+
+const Services = () => (
+  <section id="servicios" className="section" aria-labelledby="servicios-title">
+    <div className={`wrap ${styles.grid}`}>
+      <div className={styles.head} data-reveal>
+        <p className="kicker">Servicios</p>
+        <h2 id="servicios-title">Lo que construimos para tu negocio.</h2>
+        <p>
+          Un mismo equipo diseña, programa y acompaña. Empezamos por entender tu operación y
+          terminamos con software que tu gente usa todos los días.
+        </p>
       </div>
-    </section>
-  );
-};
+      <ol className={styles.list}>
+        {SERVICES.map((s, i) => (
+          <li key={s.title} data-reveal style={{ '--reveal-delay': `${i * 60}ms` }}>
+            <span className={styles.n}>{String(i + 1).padStart(2, '0')}</span>
+            <div className={styles.body}>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+            </div>
+            <ul className={styles.tags}>
+              {s.tags.map((t) => (
+                <li key={t}>{t}</li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+);
 
 export default Services;
