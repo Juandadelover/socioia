@@ -1,6 +1,6 @@
 import Logo from './ui/Logo';
-import { Instagram, Linkedin, WhatsApp } from './ui/icons';
-import { INSTAGRAM, LINKEDIN, NAV_LINKS, whatsappLink } from '../data/site';
+import { Instagram, WhatsApp } from './ui/icons';
+import { INSTAGRAM, NAV_LINKS, whatsappLink } from '../data/site';
 import { services, servicePath } from '../data/services';
 import { allProjects, projectPath } from '../data/projects';
 import styles from './Footer.module.css';
@@ -25,11 +25,6 @@ const Footer = () => (
           <li>
             <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <Instagram />
-            </a>
-          </li>
-          <li>
-            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <Linkedin />
             </a>
           </li>
         </ul>

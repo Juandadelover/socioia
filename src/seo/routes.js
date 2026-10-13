@@ -3,12 +3,12 @@
 import { allProjects, projectPath, projectBySlug } from '../data/projects';
 import { services, servicePath } from '../data/services';
 import { FAQS } from '../data/faqs';
-import { EMAIL, INSTAGRAM, LINKEDIN, PHONE } from '../data/site';
+import { EMAIL, INSTAGRAM, PHONE } from '../data/site';
 
 // Dominio público. Cambiar aquí (o con VITE_SITE_URL) cuando se conecte un dominio propio.
 export const SITE_URL = (import.meta.env?.VITE_SITE_URL || 'https://socioiasoft.vercel.app').replace(/\/$/, '');
 export const SITE_NAME = 'SocioIA';
-const OG_IMAGE = '/og-image.jpg';
+const OG_IMAGE = '/og/home.jpg';
 const abs = (path) => `${SITE_URL}${path}`;
 
 const ORG_ID = `${SITE_URL}/#organization`;
@@ -18,7 +18,7 @@ const organization = {
   '@id': ORG_ID,
   name: SITE_NAME,
   url: `${SITE_URL}/`,
-  logo: abs('/logo-socioia.png'),
+  logo: { '@type': 'ImageObject', url: abs('/icon-512.png'), width: 512, height: 512 },
   image: abs(OG_IMAGE),
   slogan: 'Tecnología que trabaja por ti',
   description:
@@ -26,7 +26,16 @@ const organization = {
   email: EMAIL,
   telephone: `+57${PHONE}`,
   areaServed: { '@type': 'Country', name: 'Colombia' },
-  sameAs: [INSTAGRAM, LINKEDIN],
+  foundingLocation: { '@type': 'Place', name: 'Colombia' },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: `+57${PHONE}`,
+    email: EMAIL,
+    contactType: 'sales',
+    areaServed: 'CO',
+    availableLanguage: ['es'],
+  },
+  sameAs: [INSTAGRAM, `https://wa.me/57${PHONE}`],
   knowsAbout: [
     'Desarrollo de software a la medida',
     'Desarrollo web',
@@ -105,6 +114,10 @@ const home = {
   description:
     'Desarrollo de software a la medida en Medellín y Valledupar: páginas web, tiendas en línea, apps y asistentes con IA. Conoce nuestros proyectos reales.',
 };
+home.images = allProjects.map((p) => {
+  const c = p.shots.find((x) => x.device === 'desktop');
+  return { src: c.src.replace('.webp', '@2x.webp'), title: `${p.name}: ${c.label}` };
+});
 home.preload = {
   href: '/proyectos/vasam/tienda.webp',
   srcset: '/proyectos/vasam/tienda.webp 1440w, /proyectos/vasam/tienda@2x.webp 2400w',
@@ -149,6 +162,7 @@ const projectRoutes = allProjects.map((p) => {
     title,
     description,
     image: `/og/${p.page}.jpg`,
+    images: p.shots.filter((x) => x.device === 'desktop').map((x) => ({ src: x.src.replace('.webp', '@2x.webp'), title: `${p.name}: ${x.label}` })),
     jsonLd: graph(
       organization,
       webPage(path, title, description),
@@ -182,6 +196,14 @@ const serviceRoutes = services.map((s) => {
     slug: s.slug,
     title: s.seoTitle,
     description: s.description,
+    image: `/og/${s.slug}.jpg`,
+    images: s.projects
+      .map((slug) => projectBySlug[slug])
+      .filter(Boolean)
+      .map((p) => {
+        const c = p.shots.find((x) => x.device === 'desktop');
+        return { src: c.src.replace('.webp', '@2x.webp'), title: `${p.name}: ${c.label}` };
+      }),
     jsonLd: graph(
       organization,
       ...locations,
@@ -242,6 +264,8 @@ export const renderHead = (route) => {
     `<meta property="og:description" content="${esc(route.description)}" />`,
     `<meta property="og:url" content="${url}" />`,
     `<meta property="og:image" content="${image}" />`,
+    `<meta property="og:image:secure_url" content="${image}" />`,
+    `<meta property="og:image:type" content="image/jpeg" />`,
     `<meta property="og:image:width" content="1200" />`,
     `<meta property="og:image:height" content="630" />`,
     `<meta property="og:image:alt" content="${esc(route.title)}" />`,
@@ -249,6 +273,7 @@ export const renderHead = (route) => {
     `<meta name="twitter:title" content="${esc(route.title)}" />`,
     `<meta name="twitter:description" content="${esc(route.description)}" />`,
     `<meta name="twitter:image" content="${image}" />`,
+    `<meta name="twitter:image:alt" content="${esc(route.title)}" />`,
     route.preload
       ? `<link rel="preload" as="image" href="${route.preload.href}" imagesrcset="${route.preload.srcset}" imagesizes="${route.preload.sizes}" fetchpriority="high" />`
       : '',
