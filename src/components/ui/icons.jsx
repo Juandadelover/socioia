@@ -66,12 +66,6 @@ export const Instagram = (p) => (
   </svg>
 );
 
-export const Linkedin = (p) => (
-  <svg {...base} {...p}>
-    <rect x="3.5" y="3.5" width="17" height="17" rx="3" />
-    <path d="M8 10.5V16M8 7.8v.1M11.5 16v-5.5M11.5 13c0-1.6 1-2.6 2.4-2.6s2.1 1 2.1 2.6V16" />
-  </svg>
-);
 
 export const WhatsApp = (p) => (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...p}>

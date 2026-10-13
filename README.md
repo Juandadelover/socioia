@@ -37,6 +37,10 @@ Datos de contacto y enlaces en `src/data/site.js`.
 - Dominio: `SITE_URL` en `src/seo/routes.js` (o la variable `VITE_SITE_URL`). Cambiarlo cuando se
   conecte un dominio propio para que canonical, Open Graph y sitemap apunten al dominio correcto.
 - Servicios con página propia: `src/data/services.js`. Preguntas frecuentes: `src/data/faqs.js`.
+- El build también genera `llms.txt` y `llms-full.txt` (resumen del sitio para asistentes de IA,
+  formato llmstxt.org) y un `robots.txt` que permite los rastreadores de buscadores e IA.
+- Imágenes para redes sociales (Open Graph, 1200x630) en `public/og/<página>.jpg`; iconos y
+  `site.webmanifest` en `public/`. Si cambian los textos de una página, conviene regenerar su imagen.
 
 Después de publicar:
 
