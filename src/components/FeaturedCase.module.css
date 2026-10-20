@@ -153,7 +153,11 @@
 .phones {
   /* espacio arriba para Loki, que se asoma sobre los celulares */
   --loki-w: clamp(84px, 8vw, 112px);
-  --loki-top: calc(var(--loki-w) * 1.53 * 0.62);
+  --loki-top: calc(var(--loki-w) * 1.53 * 0.66);
+  /* limitado también por la altura de la pantalla para que el celular se vea completo */
+  --phone-w: min(58%, 260px, calc((100vh - var(--nav-h) - 7rem - var(--loki-top)) * 9 / 19.5));
+  /* Loki detrás del celular de adelante, corrido hacia el centro del grupo */
+  --loki-x: calc(50% - var(--phone-w) * 0.31);
   position: relative;
   display: flex;
   align-items: flex-start;
@@ -165,8 +169,7 @@
 .phone {
   position: relative;
   z-index: 2;
-  /* limitado también por la altura de la pantalla para que el celular se vea completo */
-  width: min(58%, 260px, calc((100vh - var(--nav-h) - 7rem - var(--loki-top)) * 9 / 19.5));
+  width: var(--phone-w);
   animation: float 7s ease-in-out infinite;
 }
 
@@ -253,8 +256,8 @@
     grid-template-columns: 1fr;
   }
 
-  .phone {
-    width: min(48%, 240px, calc((100vh - var(--nav-h) - 7rem - var(--loki-top)) * 9 / 19.5));
+  .phones {
+    --phone-w: min(48%, 240px, calc((100vh - var(--nav-h) - 7rem - var(--loki-top)) * 9 / 19.5));
   }
 }
 

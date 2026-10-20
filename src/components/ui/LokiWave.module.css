@@ -1,13 +1,13 @@
-/* Loki asomado en el centro, arriba de los celulares. */
+/* Loki asomado en el centro, detrás de los celulares (que van con z-index mayor). */
 .loki {
   position: absolute;
   top: 0;
-  left: 50%;
-  z-index: 3;
+  left: var(--loki-x, 50%);
+  z-index: 0;
   width: var(--loki-w, 110px);
   translate: -50% 0;
   pointer-events: none;
-  filter: drop-shadow(0 14px 18px oklch(0.1 0.03 250 / 0.55));
+  filter: drop-shadow(0 10px 16px oklch(0.1 0.03 250 / 0.45));
 }
 
 .loki img {

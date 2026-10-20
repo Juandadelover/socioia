@@ -201,7 +201,10 @@
 
 .phones {
   --loki-w: clamp(84px, 8vw, 112px);
-  --loki-top: calc(var(--loki-w) * 1.53 * 0.62);
+  --loki-top: calc(var(--loki-w) * 1.53 * 0.66);
+  --phone-w: min(46%, 230px, calc((100vh - var(--nav-h) - 7rem - var(--loki-top)) * 9 / 19.5));
+  /* Loki detrás del primer celular, corrido hacia el centro */
+  --loki-x: calc(50% - var(--phone-w) * 0.4 - 0.5rem);
   position: relative;
   padding-top: var(--loki-top);
   display: flex;
@@ -211,10 +214,12 @@
 }
 
 .phone {
-  width: min(46%, 230px, calc((100vh - var(--nav-h) - 7rem - var(--loki-top)) * 9 / 19.5));
+  position: relative;
+  z-index: 1;
+  width: var(--phone-w);
 }
 
-.phone:nth-child(2) {
+.phone + .phone {
   margin-top: 10%;
 }
 
