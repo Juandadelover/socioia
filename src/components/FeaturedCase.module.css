@@ -151,18 +151,22 @@
 }
 
 .phones {
+  /* espacio arriba para Loki, que se asoma sobre los celulares */
+  --loki-w: clamp(84px, 8vw, 112px);
+  --loki-top: calc(var(--loki-w) * 1.53 * 0.62);
   position: relative;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   min-height: 0;
+  padding-top: var(--loki-top);
 }
 
 .phone {
   position: relative;
   z-index: 2;
   /* limitado también por la altura de la pantalla para que el celular se vea completo */
-  width: min(58%, 260px, calc((100vh - var(--nav-h) - 7rem) * 9 / 19.5));
+  width: min(58%, 260px, calc((100vh - var(--nav-h) - 7rem - var(--loki-top)) * 9 / 19.5));
   animation: float 7s ease-in-out infinite;
 }
 
@@ -250,7 +254,7 @@
   }
 
   .phone {
-    width: min(48%, 240px, calc((100vh - var(--nav-h) - 7rem) * 9 / 19.5));
+    width: min(48%, 240px, calc((100vh - var(--nav-h) - 7rem - var(--loki-top)) * 9 / 19.5));
   }
 }
 

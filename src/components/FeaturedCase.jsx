@@ -1,5 +1,6 @@
 import Gallery from './ui/Gallery';
 import { PhoneFrame } from './ui/Frames';
+import LokiWave from './ui/LokiWave';
 import { ArrowRight, ArrowUpRight, WhatsApp } from './ui/icons';
 import { featuredProject as p, projectPath } from '../data/projects';
 import { whatsappLink } from '../data/site';
@@ -50,6 +51,7 @@ const FeaturedCase = () => (
           </ul>
         </div>
         <div className={styles.phones} data-reveal style={{ '--reveal-delay': '150ms' }}>
+          <LokiWave />
           {p.assistant.shots.map((s, i) => (
             <PhoneFrame
               key={s.src}

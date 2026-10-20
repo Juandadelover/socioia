@@ -1,0 +1,17 @@
+/* Loki asomado en el centro, arriba de los celulares. */
+.loki {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 3;
+  width: var(--loki-w, 110px);
+  translate: -50% 0;
+  pointer-events: none;
+  filter: drop-shadow(0 14px 18px oklch(0.1 0.03 250 / 0.55));
+}
+
+.loki img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

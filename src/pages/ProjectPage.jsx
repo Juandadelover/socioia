@@ -1,5 +1,6 @@
 import Gallery from '../components/ui/Gallery';
 import { PhoneFrame } from '../components/ui/Frames';
+import LokiWave from '../components/ui/LokiWave';
 import { ArrowRight, ArrowUpRight, WhatsApp } from '../components/ui/icons';
 import Contact from '../components/Contact';
 import Breadcrumbs from './Breadcrumbs';
@@ -74,6 +75,7 @@ const ProjectPage = ({ slug }) => {
                 </ul>
               </div>
               <div className={styles.phones}>
+                <LokiWave />
                 {p.assistant.shots.map((s) => (
                   <PhoneFrame key={s.src} src={s.src} alt={`${p.name}: ${s.label}`} className={styles.phone} />
                 ))}
