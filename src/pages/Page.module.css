@@ -200,6 +200,10 @@
 }
 
 .phones {
+  --loki-w: clamp(84px, 8vw, 112px);
+  --loki-top: calc(var(--loki-w) * 1.53 * 0.62);
+  position: relative;
+  padding-top: var(--loki-top);
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -207,7 +211,7 @@
 }
 
 .phone {
-  width: min(46%, 230px, calc((100vh - var(--nav-h) - 7rem) * 9 / 19.5));
+  width: min(46%, 230px, calc((100vh - var(--nav-h) - 7rem - var(--loki-top)) * 9 / 19.5));
 }
 
 .phone:nth-child(2) {
